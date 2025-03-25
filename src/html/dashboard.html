@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Cloud Village</title>
+    <link rel="shortcut icon" href="../images/Village-removebg-preview.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=David+Libre:wght@400;500;700&family=Diphylleia&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <img class="logo" src="../images/Village-pequeno.png" alt="Nuvem com o escrito Village">
+
+        <menu type="toolbar">
+            <li class="redirect" onclick="window.location.href='index.html'">Home</li>
+            <li class="redirect" onclick="window.location.href='sobre.html'">Sobre Nós</li>
+            <li class="redirect">Admin</li>
+        </menu>
+    </header>
+
+    <main>
+        <div class="dashboard-container">
+            <!-- Barra de Busca -->
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Buscar morador ou veículo...">
+                <button onclick="searchData()"><i class="bi bi-search"></i></button>
+            </div>
+
+            <div class="tables-container">
+                <div class="table-wrapper">
+                    <h2>Moradores</h2>
+                    <table id="residentsTable">
+                        <thead>
+                            <tr>
+                                <th>Nome Completo</th>
+                                <th>Bloco e Apartamento</th>
+                                <th>Contato</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-wrapper">
+                    <h2>Veículos</h2>
+                    <table id="vehiclesTable">
+                        <thead>
+                            <tr>
+                                <th>Placa</th>
+                                <th>Modelo e Cor</th>
+                                <th>Morador Associado</th>
+                                <th>Número da Vaga</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h2>Moradores por Bloco</h2>
+                <canvas id="residentsChart"></canvas>
+            </div>
+
+            <div class="forms-container">
+                <div class="form-wrapper">
+                    <h2>Cadastrar Morador</h2>
+                    <form id="residentForm">
+                        <div class="input-group">
+                            <label for="residentName">Nome Completo</label>
+                            <input type="text" id="residentName" placeholder="Digite o nome completo" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="residentBlock">Bloco e Apartamento</label>
+                            <input type="text" id="residentBlock" placeholder="Ex: Bloco A, Apt 101" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="residentContact">Contato</label>
+                            <input type="text" id="residentContact" placeholder="Telefone e e-mail" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="residentStatus">Status</label>
+                            <select id="residentStatus" required>
+                                <option value="residente">Residente</option>
+                                <option value="proprietario">Proprietário</option>
+                                <option value="visitante">Visitante</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn-admin">Cadastrar Morador</button>
+                    </form>
+                </div>
+
+                <div class="form-wrapper">
+                    <h2>Cadastrar Veículo</h2>
+                    <form id="vehicleForm">
+                        <div class="input-group">
+                            <label for="vehiclePlate">Placa</label>
+                            <input type="text" id="vehiclePlate" placeholder="Digite a placa" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="vehicleModel">Modelo e Cor</label>
+                            <input type="text" id="vehicleModel" placeholder="Ex: Ford Ka, Preto" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="vehicleResident">Morador Associado</label>
+                            <select id="vehicleResident" required>
+
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="vehicleSpot">Número da Vaga</label>
+                            <input type="text" id="vehicleSpot" placeholder="Ex: Vaga 12" required>
+                        </div>
+                        <button type="submit" class="btn-admin">Cadastrar Veículo</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/dashboard.js"></script>
+</body>
+</html>
