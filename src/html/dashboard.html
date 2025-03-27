@@ -34,6 +34,9 @@
             <div class="tables-container">
                 <div class="table-wrapper">
                     <h2>Moradores</h2>
+                    <div>
+
+                    </div>
                     <table id="residentsTable">
                         <thead>
                             <tr>
@@ -56,7 +59,8 @@
                         <thead>
                             <tr>
                                 <th>Placa</th>
-                                <th>Modelo e Cor</th>
+                                <th>Modelo</th>
+                                <th>Cor</th>
                                 <th>Morador Associado</th>
                                 <th>Número da Vaga</th>
                                 <th>Ações</th>
@@ -71,7 +75,9 @@
 
             <div class="chart-container">
                 <h2>Moradores por Bloco</h2>
-                <canvas id="residentsChart"></canvas>
+                <div class="chart-wrapper">
+                    <canvas id="residentsChart"></canvas>
+                </div>
             </div>
 
             <div class="forms-container">
@@ -87,8 +93,12 @@
                             <input type="text" id="residentBlock" placeholder="Ex: Bloco A, Apt 101" required>
                         </div>
                         <div class="input-group">
-                            <label for="residentContact">Contato</label>
-                            <input type="text" id="residentContact" placeholder="Telefone e e-mail" required>
+                            <label for="residentPhone">Telefone</label>
+                            <input type="text" id="residentPhone" placeholder="Digite o telefone" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="residentEmail">E-mail</label>
+                            <input type="email" id="residentEmail" placeholder="Digite o e-mail">
                         </div>
                         <div class="input-group">
                             <label for="residentStatus">Status</label>
@@ -102,6 +112,41 @@
                     </form>
                 </div>
 
+                <div id="editResidentModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-modal">&times;</span>
+                        <h2>Editar Morador</h2>
+                        <form id="editResidentForm">
+                            <div class="input-group">
+                                <label for="editResidentName">Nome Completo</label>
+                                <input type="text" id="editResidentName" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="editResidentBlock">Bloco e Apartamento</label>
+                                <input type="text" id="editResidentBlock" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="editResidentPhone">Telefone</label>
+                                <input type="text" id="editResidentPhone" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="editResidentEmail">E-mail</label>
+                                <input type="email" id="editResidentEmail">
+                            </div>
+                            <div class="input-group">
+                                <label for="editResidentStatus">Status</label>
+                                <select id="editResidentStatus" required>
+                                    <option value="residente">Residente</option>
+                                    <option value="proprietario">Proprietário</option>
+                                    <option value="visitante">Visitante</option>
+                                </select>
+                            </div>
+                            <input type="hidden" id="editResidentId">
+                            <button type="submit" class="btn-admin">Salvar Alterações</button>
+                        </form>
+                    </div>
+                </div>
+
                 <div class="form-wrapper">
                     <h2>Cadastrar Veículo</h2>
                     <form id="vehicleForm">
@@ -110,8 +155,12 @@
                             <input type="text" id="vehiclePlate" placeholder="Digite a placa" required>
                         </div>
                         <div class="input-group">
-                            <label for="vehicleModel">Modelo e Cor</label>
-                            <input type="text" id="vehicleModel" placeholder="Ex: Ford Ka, Preto" required>
+                            <label for="vehicleModel">Modelo</label>
+                            <input type="text" id="vehicleModel" placeholder="Ex: Ford Ka" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="vehicleColor">Cor</label>
+                            <input type="text" id="vehicleColor" placeholder="Ex: Preto" required>
                         </div>
                         <div class="input-group">
                             <label for="vehicleResident">Morador Associado</label>
@@ -125,6 +174,39 @@
                         </div>
                         <button type="submit" class="btn-admin">Cadastrar Veículo</button>
                     </form>
+                </div>
+
+                <div id="editVehicleModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-modal">&times;</span>
+                        <h2>Editar Veículo</h2>
+                        <form id="editVehicleForm">
+                            <div class="input-group">
+                                <label for="editVehiclePlate">Placa</label>
+                                <input type="text" id="editVehiclePlate" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="editVehicleModel">Modelo</label>
+                                <input type="text" id="editVehicleModel" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="editVehicleColor">Cor</label>
+                                <input type="text" id="editVehicleColor" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="editVehicleResident">Morador Associado</label>
+                                <select id="editVehicleResident" required>
+                                    <!-- Opções serão preenchidas via JavaScript -->
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label for="editVehicleSpot">Número da Vaga</label>
+                                <input type="text" id="editVehicleSpot" required>
+                            </div>
+                            <input type="hidden" id="editVehicleId">
+                            <button type="submit" class="btn-admin">Salvar Alterações</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
