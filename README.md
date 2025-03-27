@@ -32,9 +32,11 @@ src/
 │   ├── dashboard.js
 │   ├── index.js
 │   └── sobre.js
-│
 db.js           # Configuração do banco de dados
 server.js       # Servidor principal
+cloud_village.sql
+package-lock.json
+package.json
 ```
 
 ## Páginas HTML Principais
